@@ -1,17 +1,17 @@
-language: java  
+language: java  # specify the programming language you're using
 
 jdk:
-  - openjdk11  
+  - openjdk19  # specify the JDK version to use
 
+# Cache Maven dependencies to speed up build
 cache:
   directories:
     - $HOME/.m2
 
-before_install:
-  - chmod +x mvnw 
- 
-install:
-  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+# before_script: # you may add this section if you need to execute any commands before the script runs
 
 script:
-  - ./mvnw test  
+  - chmod +x mvnw  # make Maven wrapper executable
+  - ./mvnw clean test  # run Maven clean and then tests
+
+# you can add additional configuration as needed
